@@ -1,0 +1,41 @@
+" **************************************************************************** "
+"                                                                              "
+"                                                         :::      ::::::::    "
+"    .myvimrc                                           :+:      :+:    :+:    "
+"                                                     +:+ +:+         +:+      "
+"    By: zaz <zaz@staff.42.fr>                      +#+  +:+       +#+         "
+"                                                 +#+#+#+#+#+   +#+            "
+"    Created: 2013/06/15 12:36:36 by zaz               #+#    #+#              "
+"    Updated: 2014/05/24 16:17:48 by tmertz           ###   ########.fr        "
+"                                                                              "
+" **************************************************************************** "
+
+"Put your custom Vim configuration here
+
+"Better command completion
+"set wildmenu
+"set wildmode=list:longest
+
+"Show current line
+"set cursorline
+
+set guifont=Monaco:h12
+let g:NERDTreeWinPos = "right"
+set guioptions-=T " Removes top toolbar
+set guioptions-=r " Removes right hand scroll bar
+set go-=L " Removes left hand scroll bar
+autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> correctly
+:set cpoptions+=$ " puts a $ marker for the end of words/lines in cw/c$ commands
+" Show when a line exceeds 80 chars
+au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
+" Highlight Tabs and Spaces
+highlight Tab ctermfg=darkgrey ctermbg=black guibg=darkgray
+highlight Space ctermfg=white ctermbg=red guibg=darkblue
+au BufWinEnter * let w:m2=matchadd('Tab', '\t', -1)
+au BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
+set list listchars=tab:»·,trail:·
+hi MatchParen cterm=underline ctermbg=none ctermfg=none
+set mouse=a
+filetype
+syntax on
+set nu
