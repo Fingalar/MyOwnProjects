@@ -6,13 +6,13 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:31:55 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:31:56 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:28:29 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-char*		ft_strrchr(const char *s, int c)
+char		*ft_strrchr(const char *s, int c)
 {
 	char	*last;
 	int		i;

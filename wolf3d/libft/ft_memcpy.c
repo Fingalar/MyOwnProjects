@@ -6,14 +6,13 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:24:13 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:24:14 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:39:52 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <string.h>
 
-void*			ft_memcpy(void *s1, const void* s2, size_t n)
+void		*ft_memcpy(void *s1, const void *s2, size_t n)
 {
 	char		*s1c;
 	size_t		i;

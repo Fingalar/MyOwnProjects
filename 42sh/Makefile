@@ -6,7 +6,7 @@
 #    By: cmaublan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/27 12:38:23 by cmaublan          #+#    #+#              #
-#    Updated: 2014/06/20 16:40:39 by tmertz           ###   ########.fr        #
+#    Updated: 2015/02/19 15:36:22 by tmertz           ###   ########.fr        #
 #******************************************************************************#
 
 NAME = 42sh
@@ -56,7 +56,13 @@ SRCS = main.c\
 	ft_exec_add.c\
 	add_var.c\
 	lexer_var.c\
-	cd2.c
+	cd2.c\
+	ft_malloc.c\
+	ft_free.c\
+	ft_free_checks.c\
+	tools.c\
+	print_tools.c\
+	ft_realloc.c
 
 V = 1
 
@@ -73,7 +79,7 @@ LIBFTPATH = ./libft/
 
 CFLAGS = -g -Wall -Werror -Wextra
 INCLUDES_O = -I $(LIBFTPATH) -I $(INCLUDE)
-INCLUDES_C = -L $(LIBFTPATH) -lft -L /usr/lib -ltermcap
+INCLUDES_C = -L $(LIBFTPATH) -lft -L /usr/lib -ltermcap -L./libftprintf -lftprintf
 
 SRC = $(addprefix $(SRCPATH), $(SRCS))
 OBJS= $(SRC:.c=.o)

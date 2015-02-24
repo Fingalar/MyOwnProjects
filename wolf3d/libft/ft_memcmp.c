@@ -6,7 +6,7 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:24:02 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:24:06 by tmertz           ###   ########.fr       */
+/*   Updated: 2015/01/03 10:43:33 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n)
 		}
 		return (0);
 	}
-	return (1);
+	return (0);
 }

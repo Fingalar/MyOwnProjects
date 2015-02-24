@@ -6,13 +6,13 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:27:08 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:27:09 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:33:07 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char*		ft_strcat(char *s1, const char *s2)
+char		*ft_strcat(char *s1, const char *s2)
 {
 	int		i;
 	int		j;

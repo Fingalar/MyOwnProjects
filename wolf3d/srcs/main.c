@@ -3,30 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmertz </var/mail/tmertz>                  +#+  +:+       +#+        */
+/*   By: tmertz <tmertz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/09 01:40:47 by tmertz            #+#    #+#             */
-/*   Updated: 2014/06/28 15:36:00 by tmertz           ###   ########.fr       */
+/*   Created: 2015/01/27 15:49:56 by tmertz            #+#    #+#             */
+/*   Updated: 2015/01/27 16:21:31 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include "wolf3d.h"
+#include <wolf3d.h>
 #include <mlx.h>
-#include "libft/libft.h"
+#include <libft.h>
 
-int		main(int argc, char **argv)
+int		main(void)
 {
 	t_wolf	*wolf;
 
 	wolf = (t_wolf *)malloc(sizeof(t_wolf *) * 1);
-	if (argc == 1)
-		return (1);
-	if (argc > 2)
-		return (1);
-	else
-		ft_wolf3d_parser(wolf, argv);
+	ft_wolf3d_parser(wolf);
 	ft_init_wolf3d(wolf);
 	mlx_key_hook(wolf->win, key_hook, wolf);
 	mlx_expose_hook(wolf->win, ft_expose_hook, wolf);
@@ -34,7 +30,7 @@ int		main(int argc, char **argv)
 	return (0);
 }
 
-void	ft_wolf3d_parser(t_wolf *wolf, char **argv)
+void	ft_wolf3d_parser(t_wolf *wolf)
 {
 	char		**split;
 	int			i;
@@ -42,35 +38,34 @@ void	ft_wolf3d_parser(t_wolf *wolf, char **argv)
 	int			fd;
 	char		*line;
 
-	j = 0;
-	i = 0;
-	wolf->map = (int **)malloc(sizeof(int **) * 1);
-	fd = open(argv[1], O_RDONLY);
-	while (get_next_line(fd, &line) != 0)
+	j = -1;
+	i = ft_count_lines();
+	if (i == -1)
+		exit(3);
+	wolf->map = (int **)malloc(sizeof(int *) * i);
+	fd = open("map", O_RDONLY);
+	while (get_next_line(fd, &line) > 0)
 	{
 		split = ft_strsplit(line, ' ');
 		while (split[i] != NULL)
 			i++;
-		wolf->map[j] = malloc(sizeof(int) * i);
-		i = 0;
-		while (split[i] != NULL)
-		{
+		wolf->map[++j] = malloc(sizeof(int) * i);
+		i = -1;
+		while (split[++i] != NULL)
 			wolf->map[j][i] = ft_atoi(split[i]);
-			i++;
-		}
-		j++;
 	}
+	close(fd);
 }
 
 void	ft_init_wolf3d(t_wolf *wolf)
 {
 	wolf->mlx = mlx_init();
-	wolf->win = mlx_new_window(wolf->mlx, 640, 300, "Wolf3D");
-	wolf->img = mlx_new_image(wolf->mlx, 640, 300);
+	wolf->win = mlx_new_window(wolf->mlx, MAP_W, MAP_H, "Wolf3D");
+	wolf->img = mlx_new_image(wolf->mlx, MAP_W, MAP_H);
 	wolf->adr = (int *)mlx_get_data_addr(wolf->img, &(wolf->bits),
-						&(wolf->size_line), &(wolf->endian));
-	wolf->pos_x = 3;
-	wolf->pos_y = 3;
+			&(wolf->size_line), &(wolf->endian));
+	wolf->pos_x = 2;
+	wolf->pos_y = 2;
 	wolf->dir_x = -1;
 	wolf->dir_y = 0;
 	wolf->plane_x = 0;
@@ -94,20 +89,20 @@ void	ft_wolf3d_set_sky_and_ground(t_wolf *wolf)
 	int		j;
 
 	i = 0;
-	while (i < 150)
+	while (i < MAP_H / 2)
 	{
 		j = 0;
-		while (j < 640)
+		while (j < MAP_W)
 		{
 			wolf->adr[i * MAP_W + j] = 0x88C0F0;
 			j++;
 		}
 		i++;
 	}
-	while (i < 300)
+	while (i < MAP_H)
 	{
 		j = 0;
-		while (j < 640)
+		while (j < MAP_W)
 		{
 			wolf->adr[i * MAP_W + j] = 0x5E3A3A;
 			j++;

@@ -6,7 +6,7 @@
 /*   By: jburet <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 20:49:38 by jburet            #+#    #+#             */
-/*   Updated: 2014/06/22 17:47:50 by tmertz           ###   ########.fr       */
+/*   Updated: 2015/02/19 16:10:12 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,17 @@ t_hist		*recup_hist(t_sh *sh)
 	int		fd;
 	char	*path;
 
+	int i = 0;
 	path = ft_strjoin(ft_get_var(sh, "HOME"), "/");
 	path = ft_strjoin(path, NAME_HIST);
 	if ((fd = open(path, O_RDWR | O_CREAT | O_APPEND, 0755)) == -1)
 		return (NULL);
 	while (get_next_line(fd, &line) != 0)
+	{
+		printf("%d\n", i);
+		i++;
 		sh->history = record_cmd_list(sh, line);
+	}
 	close(fd);
 	free(path);
 	return (sh->history);

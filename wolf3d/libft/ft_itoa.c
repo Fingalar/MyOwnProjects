@@ -6,7 +6,7 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:21:13 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:21:14 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:42:36 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			size_int(int n)
 	return (size);
 }
 
-char*		ft_itoa_no_exeption(int n, char *str, int size)
+char		*ft_itoa_no_exeption(int n, char *str, int size)
 {
 	size = (n > 0 ? size - 1 : size);
 	str[size + 1] = '\0';
@@ -54,7 +54,7 @@ char*		ft_itoa_no_exeption(int n, char *str, int size)
 	return (str);
 }
 
-char*		ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char	*str;
 	int		size;

@@ -3,17 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nyguel <nyguel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tmertz <tmertz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/27 04:59:20 by tmertz            #+#    #+#             */
-/*   Updated: 2014/06/20 20:13:00 by tmertz           ###   ########.fr       */
+/*   Created: 2015/02/15 14:09:07 by tmertz            #+#    #+#             */
+/*   Updated: 2015/02/19 15:49:09 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef STRUCTS
+# define STRUCTS
+
 # include "../libft/libft.h"
 # include <sys/time.h>
+# include <pthread.h>
+
+# define DEBUG printf("%s(%d)\n", __FUNCTION__, __LINE__ )
+# define SIZE_T 128
+# define SIZE_S 4096
+# define SIZE_HEADER 32
+
+# define TINY 1
+# define SMALL 2
+# define LARGE 3
+
+# define ALLOC 0
+# define FREE 1
+# define END 2
 
 typedef struct		s_var
 {
@@ -93,5 +108,23 @@ typedef struct		s_t
 	struct timeval	t1;
 	struct timeval	t2;
 }					t_t;
+
+
+typedef struct		s_header
+{
+	unsigned int	flag;
+	void			*ptr;
+	size_t			size;
+	size_t			prev_size;
+}					t_header;
+
+typedef struct		s_maps
+{
+	void			*tiny_maps;
+	void			*small_maps;
+	void			*large_maps;
+	size_t			total_size_t;
+	size_t			total_size_s;
+}					t_maps;
 
 #endif

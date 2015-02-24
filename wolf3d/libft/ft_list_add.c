@@ -6,7 +6,7 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:21:21 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 22:20:25 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/01/15 01:30:36 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@ void			ft_list_add(t_list *list, t_elem *new)
 {
 	t_elem		*buffer;
 
-	if (new)
+	if (list->first == NULL)
+	{
+		list->first = new;
+		list->last = new;
+		list->size = 1;
+		new->previous = NULL;
+	}
+	else
 	{
 		buffer = list->first;
 		list->first = new;
@@ -27,6 +34,4 @@ void			ft_list_add(t_list *list, t_elem *new)
 			new->next->previous = new;
 		list->size += 1;
 	}
-	if (new->next == NULL)
-		list->last = new;
 }

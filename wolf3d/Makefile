@@ -1,43 +1,78 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmertz <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: tmertz <tmertz@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2013/12/30 17:54:50 by tmertz            #+#    #+#              #
-#    Updated: 2014/01/12 01:58:56 by tmertz           ###   ########.fr        #
+#    Created: 2015/01/23 15:53:02 by tmertz            #+#    #+#              #
+#    Updated: 2015/02/19 14:44:42 by tmertz           ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
-SRCS = ft_raycasting.c ft_wolf3d_key_events.c main.c
+NAME = wolf3D
 
-OBJ = $(SRCS:.c=.o)
+SRCS = ft_raycasting.c\
+		main.c\
+		ft_wolf3d_key_events.c\
+		ft_draw_walls.c
 
-NAME_DEBUG = wolf3d.dSYM
+V = 1
 
-FLAGS = -Wall -Werror -Wextra -g
+SILENCE_1 :=
+SILENCE_0 :=@
+SILENCE = $(SILENCE_$(V))
+MAKE = $(SILENCE)make
+CC = $(SILENCE)cc  -O0
+RM = $(SILENCE)rm -rf
 
-NAME = wolf3d
+INCLUDE = includes
+SRCPATH = ./srcs/
+LIBFTPATH = ./libft/
 
-all : $(NAME)
+CFLAGS = -g -Wall -Werror -Wextra
+INCLUDES_O = -I $(LIBFTPATH) -I $(INCLUDE)
+INCLUDES_C = -L $(LIBFTPATH) -lft -L /usr/lib/ -lmlx -L/usr/X11/lib -lmlx -lX11 -lXext
+SRC = $(addprefix $(SRCPATH), $(SRCS))
+OBJS= $(SRC:.c=.o)
 
-.PHONY : all clean fclean re
+SKIP_1 :=
+SKIP_0 := \033[A
+SKIP = $(SKIP_$(V))
+C = \033[0;33m
+U = $(C)[$(NAME)]----->\033[0m
 
-%.o: %.c
-	gcc -c $^ -I .
+all: $(NAME)
 
-$(NAME) : $(OBJ)
-	make -C libft
-	cc $(FLAGS) -o $@ $(SRCS) -L./libft -lft -L/usr/X11/lib -lmlx -lX11 -lXext
+$(NAME): $(OBJS)
+	@echo "$(U)$(C)[LINKING: \033[1;31m$<\033[A\033[0m"
+	@echo "\033[0;32m"
+	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) $(INCLUDES_C)  libft_malloc_x86_64.so -g3
+	@echo "\033[1;31m [.working.]"
+	@echo "$(SKIP)\033[2K\033[A\033[2K$(SKIP)"
 
-clean :
-	make -C libft clean
-	$(RM) $(OBJ)
+%.o: %.c libft/libft.a
+	@echo "$(U)$(C)[COMPILE: \033[1;31m$<\033[A\033[0m"
+	@echo "\033[0;32m"
+	$(CC) -o $@ $(CFLAGS) $(INCLUDES_O) -c $<
+	@echo "\033[1;31m [.working.]"
+	@echo "$(SKIP)\033[2K\033[A\033[2K$(SKIP)"
 
-fclean : clean
-	make -C libft fclean
-	$(RM) -rf $(NAME_DEBUG)
+libft/libft.a:
+	@$(MAKE) -C $(LIBFTPATH)
+
+clean:
+	@$(MAKE) -C $(LIBFTPATH) clean
+	@echo "$(U)$(C)[CLEAN]\033[1;32m"
+	$(RM) $(OBJS)
+	@echo "$(SKIP)$(U)$(C)[CLEAN:\033[1;32m   DONE$(C)]\033[0m"
+
+fclean: clean
+	@$(MAKE) -C $(LIBFTPATH) fclean
+	@echo "$(U)$(C)[F-CLEAN]\033[1;32m"
 	$(RM) $(NAME)
+	@echo "$(SKIP)$(U)$(C)[F-CLEAN:\033[1;32m DONE$(C)]\033[0m"
 
-re : fclean all
+re: fclean all
+
+.PHONY: clean fclean re

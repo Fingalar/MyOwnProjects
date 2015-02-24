@@ -6,14 +6,14 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:29:56 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/09 02:17:40 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:32:11 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char*		ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*join;
 	int		i;

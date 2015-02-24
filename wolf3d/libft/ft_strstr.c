@@ -6,10 +6,9 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:33:50 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:33:52 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 05:30:05 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <string.h>
 #include "libft.h"
@@ -30,7 +29,7 @@ int			ft_strstr_test_equal(const char *s1, const char *s2)
 	return (0);
 }
 
-char*		ft_strstr(const char *s1, const char *s2)
+char		*ft_strstr(const char *s1, const char *s2)
 {
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);

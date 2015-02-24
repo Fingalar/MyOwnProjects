@@ -6,13 +6,13 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:27:20 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:27:23 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:28:44 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char*		ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int		i;
 

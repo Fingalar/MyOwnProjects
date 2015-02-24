@@ -6,37 +6,42 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:21:29 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/07 20:56:07 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/02/09 20:23:14 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-void	ft_list_delone(t_list *list, t_elem *this)
+static void		ft_list_del_mid(t_elem *buffer)
 {
-	t_elem	*buffer;
-	t_elem	*buffer2;
+	t_elem		*buffer1;
+	t_elem		*buffer2;
 
-	buffer = list->first;
-	while (buffer != NULL && buffer != this)
-		buffer = buffer->next;
-	if (this == list->first)
+	buffer1 = buffer->previous;
+	buffer2 = buffer->next;
+	buffer1->next = buffer2;
+	buffer1->next->previous = buffer1;
+}
+
+void			ft_list_delone(t_list *list, t_elem *this)
+{
+	t_elem		*buffer;
+
+	buffer = this;
+	if (buffer == list->first)
 	{
-		buffer = this->next;
-		list->first = buffer;
-		list->last->next = buffer;
-		buffer->previous = list->last;
-		list->size -= 1;
-		free(this);
+		list->first = buffer->next;
+		if (list->first != NULL)
+			list->first->previous = NULL;
+	}
+	else if (buffer == list->last)
+	{
+		list->last = buffer->previous;
+		if (list->last != NULL)
+			list->last->next = NULL;
 	}
 	else
-	{
-		buffer = buffer->previous;
-		buffer2 = this->next;
-		buffer->next = buffer2;
-		buffer->next->previous = buffer;
-		list->size -= 1;
-		free(this);
-	}
+		ft_list_del_mid(buffer);
+	list->size -= 1;
 }

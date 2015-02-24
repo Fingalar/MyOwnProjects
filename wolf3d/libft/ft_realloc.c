@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/03 17:30:06 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 20:22:50 by tmertz           ###   ########.fr       */
+/*   Created: 2014/02/25 14:33:56 by tmertz            #+#    #+#             */
+/*   Updated: 2014/03/27 06:36:11 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "stdlib.h"
 #include "libft.h"
 
-size_t		ft_strlcat(char *dest, const char *src, size_t n)
+void	*ft_realloc(void *mem, int size, int size_to_copy)
 {
-	size_t	i;
-	size_t	j;
-	size_t	origin;
-	size_t	c;
+	char	*new_mem;
 
-	i = j = c = 0;
-	origin = n;
-	while (src[i] != '\0')
-		i++;
-	while (dest[j] != '\0')
-		j++;
-	while (dest[c] != '\0' && n != 0)
+	new_mem = ft_memalloc(size);
+	if (mem)
 	{
-		c++;
-		n--;
+		new_mem = ft_memcpy(new_mem, mem, size_to_copy);
 	}
-	if (n == 0)
-		return (origin + i);
-	c = -1;
-	while (src[++c] && n-- > 1)
-		dest[c + j] = src[c];
-	dest[c + j] = '\0';
-	return (i + j);
+	return (new_mem);
 }

@@ -6,14 +6,14 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:34:13 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:34:15 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 05:28:52 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char*		ft_strtrim_end(char *trim)
+char		*ft_strtrim_end(char *trim)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ char*		ft_strtrim_end(char *trim)
 	return (trim);
 }
 
-char*		ft_strtrim(char const *s)
+char		*ft_strtrim(char const *s)
 {
 	char	*trim;
 	int		i;

@@ -6,14 +6,13 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:31:15 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:31:16 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:35:23 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <string.h>
 
-char*		ft_strncpy(char* s1, const char *s2, size_t n)
+char		*ft_strncpy(char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: nyguel <nyguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:19:50 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 20:22:38 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/06/20 16:47:22 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-char*		ft_trim_atoi(char *s)
+char			*ft_trim_atoi(char *s)
 {
 	char	*dst;
 	int		i;
@@ -43,30 +43,27 @@ char*		ft_trim_atoi(char *s)
 	return (NULL);
 }
 
-int			ft_atoi(const char *str)
+int				ft_atoi(const char *str)
 {
-	int		i;
-	int		neg;
-	char	*strc;
+	size_t		i;
+	int			sign;
+	int			num;
 
-	neg = 0;
+	if (str == NULL)
+		return (0);
+	num = 0;
+	sign = 1;
 	i = 0;
-	strc = ft_trim_atoi((char*)str);
-	if (strc[0] == '-')
+	while (str[i] && (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+			|| str[i] == '\f' || str[i] == '\r' || str[i] == ' '))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+		sign = (str[i++] == '-') ? -1 : 1;
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		neg = 1;
-		strc++;
+		num *= 10;
+		num += str[i] - '0';
+		i++;
 	}
-	else if (strc[0] == '+')
-		strc++;
-	while (*strc != '\0' && (*strc >= '0' && *strc <= '9'))
-	{
-		i = (i * 10) + (*strc - '0');
-		strc++;
-	}
-	if (neg == 1)
-	{
-		i = i * (-1);
-	}
-	return (i);
+	return (num * sign);
 }

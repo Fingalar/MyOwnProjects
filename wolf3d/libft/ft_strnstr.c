@@ -6,7 +6,7 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:31:45 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:31:46 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:34:03 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			ft_strnstr_test_equal(const char *s1, const char *s2)
 	return (0);
 }
 
-char*		ft_strnstr(const char *s1, const char *s2, size_t n)
+char		*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);

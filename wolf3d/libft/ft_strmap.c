@@ -6,7 +6,7 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:30:33 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:30:34 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:30:45 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <string.h>
 
-char*		ft_strmap(char const *s, char (*f)(char))
+char		*ft_strmap(char const *s, char (*f)(char))
 {
 	char	*fresh;
 	int		i;

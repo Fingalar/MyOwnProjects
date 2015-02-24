@@ -6,14 +6,14 @@
 /*   By: tmertz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/03 17:24:41 by tmertz            #+#    #+#             */
-/*   Updated: 2014/01/03 17:24:44 by tmertz           ###   ########.fr       */
+/*   Updated: 2014/03/27 06:39:12 by tmertz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
 
-void*		ft_memset(void *b, int c, size_t len)
+void		*ft_memset(void *b, int c, size_t len)
 {
 	char	*str;
 	size_t	n;
