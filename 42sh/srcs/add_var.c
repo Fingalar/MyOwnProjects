@@ -14,7 +14,7 @@
 
 int			assign_variable(t_sh *sh, t_node *node)
 {
-	t_cmd		*cmd;
+	[t_cmd		*cmd;
 	char		*name;
 	char		*value;
 	char		**tmp;
