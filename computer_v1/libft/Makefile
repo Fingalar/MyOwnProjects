@@ -26,7 +26,7 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 	ft_list_new.c ft_list_print.c ft_list_rprint.c ft_list_swap.c \
 	ft_list_unadd.c ft_list_unpush.c ft_list_delone.c ft_max.c \
 	ft_strsub_rchr.c ft_strcount_c.c ft_strchr_i.c ft_tree_add.c ft_tree_new.c \
-	ft_tree_init.c ft_realloc.c
+	ft_tree_init.c ft_realloc.c ft_sqrt.c
 
 OBJ = $(SRC:.c=.o)
 

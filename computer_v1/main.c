@@ -61,8 +61,8 @@ void		display_two_solutions(t_number *a, t_number *b, double discrimiant)
 	double		solution1;
 	double		solution2;
 
-	solution1 = ((b->number * -1.0) - sqrt(a->number)) / (a->number * 2.0);
-	solution2 = ((b->number * -1.0) + sqrt(a->number)) / (a->number * 2.0);
+	solution1 = ((b->number * -1.0) - ft_sqrt(a->number)) / (a->number * 2.0);
+	solution2 = ((b->number * -1.0) + ft_sqrt(a->number)) / (a->number * 2.0);
 	printf("Discriminant is strictly positive, the two solutions are:\n");
 	printf("%.3g\n%.3g\n", solution1, solution2);
 }

@@ -26,4 +26,5 @@ void		display_degree(t_list *expr);
 void		display_two_solutions(t_number *a, t_number *b, double discrimiant);
 void		find_discriminant_then_resolve(t_list *expr);
 void		resolve_polynomial(t_list *expr);
+double		ft_sqrt(double nb);
 #endif

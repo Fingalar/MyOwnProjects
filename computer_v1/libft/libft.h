@@ -130,5 +130,6 @@ void				ft_print_tree(t_node *node, int i);
 unsigned int		ft_power(int number, int power);
 long				ft_factorial(int number);
 int					ft_max(int *sizes, int size);
+double					ft_sqrt(double nb);
 
 #endif
