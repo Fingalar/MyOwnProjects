@@ -6,7 +6,7 @@
 #    By: cmaublan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/27 12:38:23 by cmaublan          #+#    #+#              #
-#    Updated: 2015/02/19 15:36:22 by tmertz           ###   ########.fr        #
+#    Updated: 2015/07/27 17:01:36 by tmertz           ###   ########.fr        #
 #******************************************************************************#
 
 NAME = 42sh
@@ -57,12 +57,6 @@ SRCS = main.c\
 	add_var.c\
 	lexer_var.c\
 	cd2.c\
-	ft_malloc.c\
-	ft_free.c\
-	ft_free_checks.c\
-	tools.c\
-	print_tools.c\
-	ft_realloc.c
 
 V = 1
 
@@ -95,7 +89,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo "$(U)$(C)[LINKING: \033[1;31m$<\033[A\033[0m"
 	@echo "\033[0;32m"
-	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) $(INCLUDES_C) -g3
+	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) libft_malloc_x86_64.so $(INCLUDES_C) -g3
 	@echo "\033[1;31m [.working.]"
 	@echo "$(SKIP)\033[2K\033[A\033[2K$(SKIP)"
 
